@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Volleyball Replay (10 min)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header, footer {
+      padding: 0.5rem 1rem;
+      background: #222;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    video {
+      max-width: 100%;
+      max-height: 70vh;
+      background: #000;
+    }
+    #controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 700px;
+      padding: 0.5rem 1rem;
+      box-sizing: border-box;
+      margin: 0 auto 0.5rem;
+    }
+    input[type="range"] {
+      flex: 1;
+    }
+    button {
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      border: none;
+      background: #0b84ff;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+    #capability {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Volleyball Instant Replay – up to 10 minutes on newer devices.
+    <div id="capability"></div>
+  </header>
+
+  <main>
+    <video id="playback" playsinline autoplay muted></video>
+  </main>
+
+  <section id="controls">
+    <button id="startBtn">Start</button>
+    <label for="delayRange">Delay</label>
+    <input id="delayRange" type="range" min="5" max="600" step="5" value="30" />
+    <span id="delayLabel">30 s</span>
+  </section>
+
+  <footer>
+    Each phone stores its own replay locally. Lower quality = longer safe delay.
+  </footer>
+
+  <video id="source" playsinline muted style="display:none"></video>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
